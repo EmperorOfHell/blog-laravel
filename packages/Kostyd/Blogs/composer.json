@@ -1,0 +1,17 @@
+{
+    "name": "kostyd/blogs",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kostyd\\Blogs\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kostya",
+            "email": "kostydid@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use Kostyd\Blogs\Models\Blog;
+use Kostyd\Blogs\Models\Category;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -18,5 +19,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $category = Category::factory(10)->create();
+        foreach ($category as $cat){
+           Blog::factory(5)->create([
+               'category_id' => $cat,
+           ]);
+        }
+
     }
 }

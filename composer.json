@@ -9,7 +9,8 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "kostyd/blogs": "dev-blogs"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -21,6 +22,15 @@
         "phpunit/phpunit": "^10.1",
         "spatie/laravel-ignition": "^2.0"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/Kostyd/Blogs",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",
