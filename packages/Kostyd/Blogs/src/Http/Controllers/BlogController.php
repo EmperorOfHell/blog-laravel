@@ -3,13 +3,20 @@
 namespace KostyD\Blogs\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Kostyd\Blogs\Http\Request\FilterRequest;
 use Kostyd\Blogs\Models\Blog;
 
 class BlogController extends Controller{
     public function index()
     {
         return view("blogs::blogs.index",[
-            'blogs' => Blog::paginate(5),
+            'blogs' => Blog::filter(request(['category']))->paginate(5),
         ]);
+    }
+    public function show(Blog $blog)
+    {
+        return view("blogs::blogs.show",[
+            'blog' => $blog,
+            ]);
     }
 }
