@@ -10,7 +10,7 @@ class BlogController extends Controller{
     public function index()
     {
         return view("blogs::blogs.index",[
-            'blogs' => Blog::filter(request(['category']))->paginate(5),
+            'blogs' => Blog::filter(request(['category']))->sort(request(['sort']))->paginate(5)->withQueryString(),
         ]);
     }
     public function show(Blog $blog)

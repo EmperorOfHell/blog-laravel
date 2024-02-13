@@ -5,6 +5,7 @@ namespace KostyD\Blogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Kostyd\Blogs\Contracts\FilterRequestInterface;
 use Kostyd\Blogs\Http\Request\FilterRequest;
 use Kostyd\Blogs\View\Components\CategoryComponent;
 
@@ -45,10 +46,11 @@ class BlogServiceProvider extends ServiceProvider
 
 
         // -- custom request binding --
-        $this->app->singleton(FilterRequest::class, function () {
-            return FilterRequest::capture();
+        $this->app->bind(FilterRequestInterface::class, function () {
+            return new FilterRequest(request());
         });
-        $this->app->alias(FilterRequest::class, 'request');
+//
+//        $this->app->alias(FilterRequest::class, 'filter_request');
 
     }
 }

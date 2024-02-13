@@ -5,6 +5,8 @@ namespace Kostyd\Blogs\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Kostyd\Blogs\Contracts\FilterRequestInterface;
+use Kostyd\Blogs\Http\Request\FilterRequest;
 
 class FilterComponent extends Component
 {
@@ -15,8 +17,8 @@ class FilterComponent extends Component
      */
     public function __construct()
     {
-        $this->request = app('Kostyd\Blogs\Http\Request\FilterRequest');
-        $this->filters = $this->request->all();
+        $this->request = resolve(FilterRequestInterface::class);
+        $this->filters = request()->all();
     }
 
     /**
