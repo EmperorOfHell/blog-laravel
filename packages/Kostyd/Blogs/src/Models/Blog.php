@@ -15,10 +15,10 @@ class Blog extends Model
             $query->whereHas($name, fn($query) => $query->whereIn('name', $value));
         }
     }
-    public function scopeSort($query, array $sorting)
+    public function scopeSort($query, array $sorting, string $dir = 'asc')
     {
         foreach ($sorting as $value){
-            $query->orderBy($value);
+            $query->orderBy($value, $dir);
         }
     }
 

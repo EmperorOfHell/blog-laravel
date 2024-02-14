@@ -26,4 +26,5 @@ class FilterRequest implements FilterRequestInterface
             ? $this->req->url().$question.Arr::query($query)
             : $this->req->url();
     }
+
 }

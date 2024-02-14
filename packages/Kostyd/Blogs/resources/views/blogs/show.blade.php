@@ -17,9 +17,10 @@
             </div>
         </div>
 
-        <div class="bg-white shadow-sm rounded-md  p-12">
+        <div class="bg-white shadow-sm rounded-md mb-6 p-12">
             {!! $blog->body !!}
         </div>
+        <x-comments />
     </div>
 </x-app-layout>
 

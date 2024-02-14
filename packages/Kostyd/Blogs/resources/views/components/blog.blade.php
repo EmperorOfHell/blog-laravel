@@ -6,9 +6,18 @@
         <x-sort />
     </div>
 
-
-    @foreach($posts as $post)
-        <x-blogs::post-card :item="$post"/>
-    @endforeach
+    @if($posts->isEmpty())
+        <div class="flex items-center justify-center">
+            <div class="bg-white shadow-sm sm:rounded-lg">
+                <div class="text-gray-900 center px-6 py-3">
+                    {{ __("Not found any post") }}
+                </div>
+            </div>
+        </div>
+    @else
+        @foreach($posts as $post)
+            <x-blogs::post-card :item="$post"/>
+        @endforeach
+    @endif
     {{$posts->links()}}
 </div>

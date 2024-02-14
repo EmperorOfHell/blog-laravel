@@ -43,6 +43,7 @@ class BlogServiceProvider extends ServiceProvider
         Blade::component(\Kostyd\Blogs\View\Components\BlogComponent::class, 'blog');
         Blade::component(\Kostyd\Blogs\View\Components\FilterComponent::class, 'filters');
         Blade::component(\Kostyd\Blogs\View\Components\SortComponent::class, 'sort');
+        Blade::component(\Kostyd\Blogs\View\Components\CommentsComponent::class, 'comments');
 
 
         // -- custom request binding --

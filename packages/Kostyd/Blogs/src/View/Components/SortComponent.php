@@ -5,10 +5,13 @@ namespace Kostyd\Blogs\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Kostyd\Blogs\Contracts\FilterRequestInterface;
+use Kostyd\Blogs\Http\Request\FilterRequest;
 
 class SortComponent extends Component
 {
     public $sorting;
+    public $req;
 
     /**
      * Create a new component instance.
@@ -17,9 +20,10 @@ class SortComponent extends Component
     {
         $this->sorting = [
             'title' => 'title',
-            'created_at' => 'latest created',
-            'updated_at' => 'latest updated'
+            'created_at' => 'created date',
+            'updated_at' => 'updated date'
         ];
+        $this->req = request();
     }
 
     /**
