@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Kostyd\Blogs\Models\Blog;
 use Kostyd\Blogs\Models\Category;
+use App\Models\User;
+use Kostyd\Blogs\Models\Comment;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -19,11 +21,23 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $category = Category::factory(10)->create();
-        foreach ($category as $cat){
-           Blog::factory(5)->create([
-               'category_id' => $cat,
+        $users = User::factory(5)->create();
+        $categories = Category::factory(10)->create();
+        foreach ($categories as $category){
+          Blog::factory(5)->create([
+               'category_id' => $category,
            ]);
+        }
+
+        $blogs = Blog::all();
+        foreach ($blogs as $blog) {
+            $commentsCount = random_int(1, 5);
+            for ($i = 0; $i < $commentsCount; $i++) {
+                Comment::factory()->create([
+                    'user_id' => $users->random(),
+                    'post_id' => $blog,
+                ]);
+            }
         }
 
     }

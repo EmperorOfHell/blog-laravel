@@ -26,6 +26,10 @@ class Blog extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'post_id');
+    }
     protected static function newFactory()
     {
         return \Kostyd\Blogs\Models\Factories\BlogFactory::new();

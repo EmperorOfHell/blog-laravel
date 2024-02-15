@@ -5,13 +5,14 @@ namespace Kostyd\Blogs\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Kostyd\Blogs\Models\Comment;
 
 class CommentsComponent extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(public $comments)
     {
         //
     }

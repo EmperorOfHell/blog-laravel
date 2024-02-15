@@ -12,7 +12,7 @@
                     <a  href="{{route('blogs.index') . '?category[]=' . $blog->category->name}}"
                         class="my-2 p-1 bg-gradient-to-br from-purple-600 cursor-pointer to-blue-500 w-fit text-xs text-gray-200 rounded-md  items-center capitalize ">{{$blog->category->name}}</a>
                     <p class="">{{$blog->short_desc}}</p>
-                    <p class="text-xs text-gray-500 ">Created at {{$blog->created_at}}</p>
+                    <p class="text-xs text-gray-500 ">Created {{$blog->created_at->diffForHumans()}}</p>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
         <div class="bg-white shadow-sm rounded-md mb-6 p-12">
             {!! $blog->body !!}
         </div>
-        <x-comments />
+        <x-comments :comments="$blog->comments"/>
     </div>
 </x-app-layout>
 
